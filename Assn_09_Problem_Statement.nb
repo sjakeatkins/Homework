@@ -1,0 +1,1159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     46673,       1151]
+NotebookOptionsPosition[     38724,       1032]
+NotebookOutlinePosition[     40585,       1070]
+CellTagsIndexPosition[     40542,       1067]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["PH521: Quantum Mechanics, II",
+  FontSize->14],
+ StyleBox["\n",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox["M. T. Lusk",
+  FontSize->14],
+ StyleBox["\nAssignment 9",
+  FontSize->14,
+  FontWeight->"Bold"]
+}], "Title",
+ CellChangeTimes->{{3.812119519539497*^9, 3.812119532546399*^9}, 
+   3.8121305045564833`*^9},
+ TextAlignment->Center,ExpressionUUID->"5ec389d0-d632-443e-85f6-d018646f7c12"],
+
+Cell[TextData[{
+ StyleBox["Reading:",
+  FontWeight->"Bold"],
+ " \n\[SmallCircle]  Peskin and Schroeder sections 2.3 and 2.4"
+}], "Text",
+ CellChangeTimes->{
+  3.745670420451404*^9, {3.7456704794552526`*^9, 3.745670538645104*^9}, {
+   3.745671571854835*^9, 3.745671581672963*^9}, {3.74567175962055*^9, 
+   3.745671824415687*^9}, {3.745683274148879*^9, 3.74568327664063*^9}, {
+   3.745689853967689*^9, 3.7456898564783287`*^9}, {3.7456915766565113`*^9, 
+   3.74569158287151*^9}, {3.746260030829012*^9, 3.746260034531624*^9}, {
+   3.74626968045533*^9, 3.746269709897946*^9}, {3.8121296425738754`*^9, 
+   3.812129647363963*^9}},ExpressionUUID->"c6d51466-c603-4454-bded-\
+1e70dab007e3"],
+
+Cell[CellGroupData[{
+
+Cell["[1] Green Operator for the Real-Valued Klein-Gordon Equation", "Section",
+ CellChangeTimes->{{3.739972781603842*^9, 3.7399727970029573`*^9}, {
+  3.73998603325301*^9, 3.7399860431502657`*^9}, {3.7400797600391912`*^9, 
+  3.7400797674768267`*^9}, {3.74014660863795*^9, 3.740146629435782*^9}, {
+  3.7401657758556004`*^9, 3.740165793175157*^9}, {3.7402125374276*^9, 
+  3.7402125509933643`*^9}, {3.74861386179173*^9, 3.7486138630081043`*^9}, {
+  3.812119573948335*^9, 3.81211959038265*^9}, {3.812127344300626*^9, 
+  3.8121273767897577`*^9}},ExpressionUUID->"fa262c83-3b95-4974-af21-\
+6cd830faaf6c"],
+
+Cell["Consider the real-valued Klein-Gordon equation of motion:", "Text",
+ CellChangeTimes->{{3.812127027434103*^9, 
+  3.8121270418464303`*^9}},ExpressionUUID->"64a26ff5-d760-47d0-86d6-\
+fc7ae75af1d3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", "tt"], 
+     RowBox[{"-", 
+      RowBox[{
+       SuperscriptBox["\[Del]", "2"], 
+       RowBox[{"+", 
+        SuperscriptBox["m", "2"]}]}]}]}], ")"}], "\[CurlyPhi]"}], " ", "=", 
+  "0"}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+  3.812127052902991*^9, 
+  3.8121270875067716`*^9}},ExpressionUUID->"cd3829c5-22f2-491d-a0ec-\
+b4019d4d810d"],
+
+Cell["\<\
+Define the KG propagator (Green operator) as the solution to the \
+inhomogeneous KG equation:\
+\>", "Text",
+ CellChangeTimes->{{3.812127103636072*^9, 3.812127164485877*^9}, {
+  3.8121282447828884`*^9, 
+  3.812128256257407*^9}},ExpressionUUID->"c1437938-ee11-4eb0-b29b-\
+33e08837fb86"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", "tt"], 
+     RowBox[{"-", 
+      RowBox[{
+       SuperscriptBox["\[Del]", "2"], 
+       RowBox[{"+", 
+        SuperscriptBox["m", "2"]}]}]}]}], ")"}], "G", 
+   RowBox[{"(", 
+    RowBox[{"x", "-", "y"}], ")"}]}], " ", "=", 
+  RowBox[{
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Delta]", 
+   RowBox[{"(", 
+    RowBox[{"x", "-", "y"}], ")"}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+  3.812127052902991*^9, 3.8121270875067716`*^9}, {3.812127171441887*^9, 
+  3.8121271821988688`*^9}, {3.8121283451481447`*^9, 
+  3.812128355536832*^9}},ExpressionUUID->"cbf17e1f-3869-497a-896b-\
+07d78c3c2f96"],
+
+Cell["\<\
+where x and y are 2 points in Minkowski space. The use of \"\[ImaginaryI]\" \
+on the right-hand side varies with author to author, and Peskin and Schroeder \
+use it to remove an \"\[ImaginaryI]\" that would otherwise appear in the \
+propagator expression. 
+
+Derive the following:\
+\>", "Text",
+ CellChangeTimes->{{3.812127186281741*^9, 3.8121272573816853`*^9}, {
+  3.812128265589369*^9, 3.812128293772969*^9}, {3.8121283652768564`*^9, 
+  3.812128377651676*^9}, {3.8121297316464643`*^9, 
+  3.8121297318287334`*^9}},ExpressionUUID->"33639ea0-0fe1-4222-b73c-\
+886bad1f24d8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"G", 
+   RowBox[{"(", 
+    RowBox[{"x", "-", "y"}], ")"}]}], " ", "=", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"-", "\[ImaginaryI]"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]"}], ")"}], "4"]], 
+   RowBox[{
+    SubscriptBox["\[Integral]", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "3"]], 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[DifferentialD]", "3"], 
+      OverscriptBox["p", "_"]}], 
+     "\[ScriptCapitalI]"}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+  3.812127052902991*^9, 3.8121270875067716`*^9}, {3.812127171441887*^9, 
+  3.8121271821988688`*^9}, {3.8121283451481447`*^9, 
+  3.8121284610240088`*^9}},ExpressionUUID->"d5e9339f-66e6-43b4-a698-\
+b82c3e45d8dc"],
+
+Cell["where the integral, \[ScriptCapitalI], is defined as", "Text",
+ CellChangeTimes->{{3.812128465868046*^9, 3.8121284663590918`*^9}, {
+  3.812129738167054*^9, 
+  3.812129750877611*^9}},ExpressionUUID->"9d4028b1-5e37-46ca-9bc7-\
+ae43ed0e6a7f"],
+
+Cell[BoxData[
+ RowBox[{"\[ScriptCapitalI]", " ", ":=", 
+  RowBox[{
+   SubscriptBox["\[Integral]", "\[DoubleStruckCapitalR]"], 
+   RowBox[{
+    RowBox[{"\[DifferentialD]", "\[Omega]"}], " ", 
+    FractionBox[
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", 
+       RowBox[{"p", "\[CenterDot]", 
+        RowBox[{"(", 
+         RowBox[{"x", "-", "y"}], ")"}]}]}]], 
+     RowBox[{
+      SuperscriptBox["\[Omega]", "2"], "-", " ", 
+      SubscriptBox[
+       OverscriptBox["E", "_"], 
+       OverscriptBox["p", "_"]]}]]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+  3.812127052902991*^9, 3.8121270875067716`*^9}, {3.812127171441887*^9, 
+  3.8121271821988688`*^9}, {3.8121283451481447`*^9, 3.8121285311377363`*^9}, {
+  3.8121285621585326`*^9, 
+  3.812128589026439*^9}},ExpressionUUID->"1e4c8fa1-0c0c-41dc-9fd4-\
+a42b8244f20d"],
+
+Cell["Remember that the dispersion relation is", "Text",
+ CellChangeTimes->{{3.8121286008435345`*^9, 3.812128601119914*^9}, {
+  3.812128635158676*^9, 3.8121286387174683`*^9}, {3.8121297563205013`*^9, 
+  3.812129761305666*^9}},ExpressionUUID->"2a4572b5-8af6-4c06-b338-\
+d4b8ee9772d3"],
+
+Cell[BoxData[
+ RowBox[{
+  SubsuperscriptBox[
+   OverscriptBox["E", "_"], 
+   OverscriptBox["p", "_"], "2"], "  ", ":=", 
+  RowBox[{"|", 
+   OverscriptBox["p", "_"], 
+   SuperscriptBox["|", "2"], 
+   RowBox[{"+", 
+    SuperscriptBox["m", "2"]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+  3.812127052902991*^9, 3.8121270875067716`*^9}, {3.812127171441887*^9, 
+  3.8121271821988688`*^9}, {3.8121283451481447`*^9, 3.8121285311377363`*^9}, {
+  3.8121285621585326`*^9, 
+  3.8121286552830086`*^9}},ExpressionUUID->"5bbe8d1a-5a77-42ac-acb7-\
+b5fd2c0c8ed9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["[2] The Retarded Klein-Gordon Propagator", "Section",
+ CellChangeTimes->{{3.739972781603842*^9, 3.7399727970029573`*^9}, {
+  3.73998603325301*^9, 3.7399860431502657`*^9}, {3.7400797600391912`*^9, 
+  3.7400797674768267`*^9}, {3.74014660863795*^9, 3.740146629435782*^9}, {
+  3.7401657758556004`*^9, 3.740165793175157*^9}, {3.7402125374276*^9, 
+  3.7402125509933643`*^9}, {3.74861386179173*^9, 3.7486138630081043`*^9}, {
+  3.812119573948335*^9, 3.81211959038265*^9}, {3.812127344300626*^9, 
+  3.8121273767897577`*^9}, {3.812128668416459*^9, 3.81212867587244*^9}, {
+  3.812129679526822*^9, 
+  3.8121296819176025`*^9}},ExpressionUUID->"530d5b47-7f80-4856-8be5-\
+a5be2d72672b"],
+
+Cell["\<\
+The Wightman function, D[x-y], is a generic propagator that is useful in \
+analyzing retarded, advanced, and Feynman propagators. It is defined as\
+\>", "Text",
+ CellChangeTimes->{{3.748880352541873*^9, 3.748880358994548*^9}, {
+  3.748880597243761*^9, 3.748880651471849*^9}, {3.748880699471558*^9, 
+  3.748880726013156*^9}, {3.74888076207554*^9, 3.7488807843331757`*^9}, {
+  3.7820411998030596`*^9, 3.782041212485131*^9}, {3.812119785990964*^9, 
+  3.812119847433977*^9}, {3.812128925537382*^9, 
+  3.8121289760973945`*^9}},ExpressionUUID->"d920c8d8-34fb-4eb6-bf45-\
+a7c6d17254b3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", 
+    RowBox[{"x", "-", "y"}], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    FractionBox["1", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"2", "\[Pi]"}], ")"}], "3"]], 
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[DifferentialD]", "3"], 
+       OverscriptBox["p", "_"]}], " ", 
+      FractionBox["1", 
+       RowBox[{"2", 
+        SubscriptBox["E", 
+         OverscriptBox["p", "_"]]}]], 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", 
+        RowBox[{"p", " ", "\[CenterDot]", " ", 
+         RowBox[{"(", 
+          RowBox[{"x", "-", "y"}], ")"}]}]}]]}]}]}], 
+   SubscriptBox["|", 
+    RowBox[{
+     SuperscriptBox["p", "0"], "=", " ", 
+     SubscriptBox["E", 
+      OverscriptBox["p", "_"]]}]]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 
+  3.748880866534218*^9}},ExpressionUUID->"27e020a7-bf48-435a-a461-\
+ec4e3492696f"],
+
+Cell["\<\
+Using the expression you derived in Problem [1], show that the retarded KG \
+propagator (Green operator) can be expressed as a function of this generic \
+propagator:\
+\>", "Text",
+ CellChangeTimes->{{3.78204164112261*^9, 3.782041648765165*^9}, 
+   3.7820417141407757`*^9, 3.8121198202205772`*^9, 3.812128134970547*^9, {
+   3.812128189561041*^9, 3.812128234590276*^9}, {3.8121289901418657`*^9, 
+   3.8121290102862005`*^9}},ExpressionUUID->"261f05dd-e7c6-4763-9706-\
+8d30f43f1ae9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "R"], 
+   RowBox[{"(", 
+    RowBox[{"x", "-", "y"}], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"D", 
+      RowBox[{"(", 
+       RowBox[{"x", "-", "y"}], ")"}]}], " ", "-", " ", 
+     RowBox[{"D", 
+      RowBox[{"(", 
+       RowBox[{"y", "-", "x"}], ")"}]}]}], ")"}], "\[Theta]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["x", "0"], "-", 
+     SuperscriptBox["y", "0"]}], ")"}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+  3.812128150581255*^9, 
+  3.812128186006369*^9}},ExpressionUUID->"bebc5fd4-c609-4a4f-aefc-\
+af297642b333"],
+
+Cell["\<\
+We will be using the Wightman function down the road, especially to help \
+simply the analysis of Feynman propagators in QFT.\
+\>", "Text",
+ CellChangeTimes->{{3.812129778696045*^9, 
+  3.8121298145863657`*^9}},ExpressionUUID->"6e93da7c-8f4b-40da-bf55-\
+4560880001e7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["[3] Time-Like Separation of Events", "Section",
+ CellChangeTimes->{{3.748974622723385*^9, 3.7489746326232967`*^9}, {
+  3.812121797193184*^9, 3.8121217977202168`*^9}, {3.8121290332105904`*^9, 
+  3.812129035790836*^9}, {3.8121296932493114`*^9, 
+  3.8121296951053205`*^9}},ExpressionUUID->"e8333c71-6b97-4b20-b7cb-\
+415307252415"],
+
+Cell[CellGroupData[{
+
+Cell["[a] Time-Like Separations", "Subsection",
+ CellChangeTimes->{{3.812129296837601*^9, 3.8121292975331078`*^9}, {
+  3.812129345586297*^9, 
+  3.812129348448104*^9}},ExpressionUUID->"86b90de5-a812-4981-a106-\
+26e780735acb"],
+
+Cell[TextData[{
+ "Put event y at the origin and assume that event x is time-like. Then there \
+exists a frame for which event x is ",
+ StyleBox["purely",
+  FontVariations->{"Underline"->True}],
+ " time-like--i.e. for which event x occurs at a later time than event y but \
+at the same position in space. We can therefore set ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      OverscriptBox["p", "_"], "x"], " ", "-", " ", 
+     SubscriptBox[
+      OverscriptBox["p", "_"], "y"]}], " ", "=", " ", "0"}], 
+   TraditionalForm]],ExpressionUUID->"8486c039-bbea-4981-a7f9-0c2a56863cde"],
+ " and plot ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"D", "(", 
+     RowBox[{
+      SuperscriptBox["x", "0"], " ", "-", " ", 
+      SuperscriptBox["y", "0"]}], ")"}], " ", "\[Congruent]", " ", 
+    RowBox[{"D", "(", "t", ")"}]}], TraditionalForm]],ExpressionUUID->
+  "718bd1ee-c487-4399-b547-958c7a6a3341"],
+ ". As you know, though, the value of this function will be the same \
+everywhere on the \"Lorentz hyperbola\" that goes a given position on the \
+time-axis. This is powerful because it implies that your purely time-like \
+result can be immediately extended to all points in the light-cone by a \
+simple boost (Lorentz translation).\n\nWithin this setting, derive the \
+following expression for the Wightman function:"
+}], "Text",
+ CellChangeTimes->{{3.7488808434251757`*^9, 3.7488808992219276`*^9}, {
+   3.748881283217847*^9, 3.748881342185067*^9}, {3.748881798691478*^9, 
+   3.748881878395687*^9}, {3.7488823584522467`*^9, 3.748882381075396*^9}, {
+   3.748890355047944*^9, 3.748890372947914*^9}, {3.748948372656231*^9, 
+   3.7489484055208*^9}, {3.749318159762097*^9, 3.7493182833327923`*^9}, {
+   3.74931864093435*^9, 3.749318643925901*^9}, {3.78204175459042*^9, 
+   3.78204175459042*^9}, {3.8121218359824653`*^9, 3.8121218521582704`*^9}, {
+   3.8121219613042493`*^9, 3.812121974871765*^9}, {3.81212235133322*^9, 
+   3.812122418392671*^9}, {3.8121228067939095`*^9, 3.8121229503003016`*^9}, {
+   3.8121292465524406`*^9, 3.812129247132978*^9}, 3.812129303772552*^9, {
+   3.8121298251651783`*^9, 
+   3.8121298520981426`*^9}},ExpressionUUID->"dedd5e2f-9e95-4586-b94d-\
+98487b196e07"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", "t", ")"}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]"}], ")"}], "2"]], 
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[Integral]", "m"], "\[Infinity]"], 
+    RowBox[{
+     RowBox[{"\[DifferentialD]", " ", 
+      SubscriptBox["E", 
+       OverscriptBox["p", "_"]]}], " ", 
+     SqrtBox[
+      RowBox[{
+       SuperscriptBox[
+        SubscriptBox["E", 
+         OverscriptBox["p", "_"]], "2"], "-", 
+       SuperscriptBox["m", "2"]}]], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", 
+       SubscriptBox["E", 
+        OverscriptBox["p", "_"]], " ", "t"}]]}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+   3.7820562333849087`*^9, 3.782056264895031*^9}, 3.782056566648992*^9, {
+   3.7820566297746744`*^9, 3.78205670637234*^9}, 3.7820567470627637`*^9, {
+   3.7820567918872848`*^9, 3.7820567945651207`*^9}, 
+   3.812122972038227*^9},ExpressionUUID->"095cc0dd-a604-4df1-be66-\
+4aa56a5db57b"],
+
+Cell["\<\
+Remember that anything we learn about the Wightman function can be \
+immediately applied to the retarded Green propagator.\
+\>", "Text",
+ CellChangeTimes->{{3.812129868888842*^9, 
+  3.812129902767759*^9}},ExpressionUUID->"d9973a7c-c853-4ed2-89ee-\
+9b3625825632"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+[b] Numerical Evaluation of the Wightman Function for Time-Like Separations\
+\>", "Subsection",
+ CellChangeTimes->{{3.812122469430673*^9, 3.812122488709934*^9}, 
+   3.812129266027486*^9},ExpressionUUID->"89327832-967e-4304-9996-\
+ca7d04b55df5"],
+
+Cell["\<\
+You might at first think that the integral that you derived above does not \
+converge because it is oscillatory, but that is not the case. This kind of \
+integral comes up all the time in physics, perhaps most notably in the \
+Fresnel integrals (https://en.wikipedia.org/wiki/Fresnel_integral). Rather \
+than derive an analytic solution to this integral, though, please lean into \
+Mathematica\[CloseCurlyQuote]s ability to numerically estimate such \
+expressions using a method called Extrapolating Oscillatory. You can read up \
+on it, but the bottom line is that Mathematica\[CloseCurlyQuote]s routines \
+are good at performing such integrations. 
+
+As a check on Mathematica though, let's try out its routines for oscillatory \
+integrals where there is a standard analytic solution. The following Fresnel \
+integrals fulfill this requirement:\
+\>", "Text",
+ CellChangeTimes->{{3.7488905388202*^9, 3.7488905626288023`*^9}, {
+   3.748974575287352*^9, 3.74897461287325*^9}, {3.7489746658716516`*^9, 
+   3.748974869145893*^9}, {3.7489749136287317`*^9, 3.748974947722377*^9}, {
+   3.749318627039955*^9, 3.7493186534539537`*^9}, 3.8121224648013773`*^9, {
+   3.8121224973248224`*^9, 3.812122500770406*^9}, {3.812123009242669*^9, 
+   3.812123010136421*^9}, {3.812129910078877*^9, 
+   3.812129947958583*^9}},ExpressionUUID->"cbb579e7-01cb-4d40-830b-\
+aa4b0e95ae72"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubsuperscriptBox["\[Integral]", "0", "\[Infinity]"], 
+   RowBox[{
+    RowBox[{"\[DifferentialD]", "x"}], " ", 
+    SuperscriptBox["x", "a"], 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      SuperscriptBox["x", "b"]}]]}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox["1", "b"], "\[CapitalGamma]", 
+   RowBox[{"(", 
+    FractionBox[
+     RowBox[{"a", "+", "1"}], "b"], ")"}], " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"a", "+", "1"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "b"}], ")"}]}]}]]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.7489749537206097`*^9, 
+  3.748975022542639*^9}},ExpressionUUID->"cb25d073-3342-4b42-87fb-\
+3eeab1973784"],
+
+Cell["\<\
+Here \[CapitalGamma] is the Gamma function, a generalization of the factorial \
+function to real numbers.
+
+Call the right-hand side the analytical result, Analfunc:\
+\>", "Text",
+ CellChangeTimes->{{3.748975027365546*^9, 
+  3.748975094219294*^9}},ExpressionUUID->"dcc36ec3-2f87-486b-b2b7-\
+320d54672c68"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{"Analfunc", ",", "a", ",", "b"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Analfunc", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], "=", 
+  RowBox[{
+   FractionBox["1", "b"], 
+   RowBox[{"Gamma", "[", 
+    FractionBox[
+     RowBox[{"a", "+", "1"}], "b"], "]"}], 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"a", "+", "1"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "b"}], ")"}]}]}]]}]}]}], "Input",
+ CellChangeTimes->{{3.748973381183085*^9, 3.7489734252784433`*^9}, {
+  3.7489735747063627`*^9, 3.748973577616899*^9}, {3.7489736376078253`*^9, 
+  3.748973639574122*^9}, {3.748975122187792*^9, 3.748975129850459*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"d9809547-58e6-4662-92f9-182dcd201bd3"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    FractionBox[
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", "a"}], ")"}], " ", "\[Pi]"}], 
+     RowBox[{"2", " ", "b"}]]], " ", 
+   RowBox[{"Gamma", "[", 
+    FractionBox[
+     RowBox[{"1", "+", "a"}], "b"], "]"}]}], "b"]], "Output",
+ CellChangeTimes->{3.748973426619879*^9, 3.7489735786956673`*^9, 
+  3.7489736409960938`*^9, 3.782041046863919*^9, 3.8121230496710043`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"02f54a93-fdc6-45af-a4aa-0f45b4cb4f2d"]
+}, Open  ]],
+
+Cell["\<\
+Define a Mathematica algorithm to calculate this numerically, Numfunc:\
+\>", "Text",
+ CellChangeTimes->{{3.748975098037746*^9, 
+  3.7489751190024147`*^9}},ExpressionUUID->"c332ef5e-f453-404d-bbe8-\
+d71f5ca2ebde"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{"Numfunc", ",", "a", ",", "b"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Numfunc", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+  RowBox[{"NIntegrate", "[", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["x", "a"], " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[ImaginaryI]", " ", 
+       SuperscriptBox["x", "b"]}]]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "\[Infinity]"}], "}"}], ",", " ", 
+    RowBox[{"Method", "->", "\"\<ExtrapolatingOscillatory\>\""}], ",", " ", 
+    RowBox[{"PrecisionGoal", "\[Rule]", "8"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7489723189262037`*^9, 3.748972395939829*^9}, {
+  3.748972878578106*^9, 3.748972897805941*^9}, {3.748973299262038*^9, 
+  3.748973368760243*^9}, {3.748973685259082*^9, 3.748973709963711*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"c86c79d8-ab27-4127-b108-fd33cb565c7c"],
+
+Cell["\<\
+Compare the analytical and numerical estimates for {a, b} = {1, 1}.\
+\>", "Text",
+ CellChangeTimes->{{3.748975284182382*^9, 
+  3.7489753124983473`*^9}},ExpressionUUID->"71ff0fce-5af1-484c-b0f9-\
+0517f6037f10"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aset", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bset", " ", "=", " ", "1"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Analfunc", "[", 
+   RowBox[{"aset", ",", "bset"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Numfunc", "[", 
+  RowBox[{"aset", ",", "bset"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7489734292773952`*^9, 3.748973461509398*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"68bc335a-3ed4-4239-864c-250a917aa956"],
+
+Cell[BoxData[
+ RowBox[{"-", "1"}]], "Output",
+ CellChangeTimes->{{3.748973434865267*^9, 3.748973461811417*^9}, 
+   3.74897358292115*^9, 3.7489736474029284`*^9, {3.748973687308404*^9, 
+   3.7489737116570168`*^9}, {3.748974397479229*^9, 3.7489744051450367`*^9}, 
+   3.782041046898795*^9, 3.8121230540194044`*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"358c0f7b-fbba-4a55-8d47-c213a7326c0a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "1.0000302082396875`"}], "-", 
+  RowBox[{"5.361755484045716`*^-11", " ", "\[ImaginaryI]"}]}]], "Output",
+ CellChangeTimes->{{3.748973434865267*^9, 3.748973461811417*^9}, 
+   3.74897358292115*^9, 3.7489736474029284`*^9, {3.748973687308404*^9, 
+   3.7489737116570168`*^9}, {3.748974397479229*^9, 3.7489744051450367`*^9}, 
+   3.782041046898795*^9, 3.812123054352996*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"95f0ba8a-0fcd-4739-b7b6-02cd475f082a"]
+}, Open  ]],
+
+Cell["Excellent. Now let\[CloseCurlyQuote]s try {a, b} = {2, 1}.", "Text",
+ CellChangeTimes->{{3.748975317339281*^9, 
+  3.748975332586028*^9}},ExpressionUUID->"c27b5020-5694-44cc-81fe-\
+7924d9f7698f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aset", " ", "=", " ", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bset", " ", "=", " ", "1"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Analfunc", "[", 
+   RowBox[{"aset", ",", "bset"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Numfunc", "[", 
+  RowBox[{"aset", ",", "bset"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.748973477122854*^9, 3.748973522317423*^9}, {
+  3.81212304240561*^9, 3.812123066191918*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"0d06b10a-5843-48f0-901e-851964f7cf8f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "2"}], " ", "\[ImaginaryI]"}]], "Output",
+ CellChangeTimes->{{3.7489735136971407`*^9, 3.7489735247359333`*^9}, 
+   3.748973588448937*^9, {3.7489736501924677`*^9, 3.748973713752149*^9}, 
+   3.748975334973461*^9, 3.7820410471660795`*^9, {3.812123044625435*^9, 
+   3.812123066547682*^9}},
+ CellLabel->"Out[19]=",ExpressionUUID->"e46597c9-e1d3-4e05-8ac5-12f3145e3942"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "0.009034689605961432`"}], "-", 
+  RowBox[{"1.9999999999199503`", " ", "\[ImaginaryI]"}]}]], "Output",
+ CellChangeTimes->{{3.7489735136971407`*^9, 3.7489735247359333`*^9}, 
+   3.748973588448937*^9, {3.7489736501924677`*^9, 3.748973713752149*^9}, 
+   3.748975334973461*^9, 3.7820410471660795`*^9, {3.812123044625435*^9, 
+   3.8121230666254697`*^9}},
+ CellLabel->"Out[20]=",ExpressionUUID->"fc152d48-aecd-4536-bcd7-d642962cdf31"]
+}, Open  ]],
+
+Cell["\<\
+Again. This is very good. We can conclude that Mathematica\[CloseCurlyQuote]s \
+numerical approach is probably okay for the integral we are actually \
+interested in. However, you can obviate the need to use Mathematica's \
+numerical algorithm by expanding the square root in a power series and then \
+using the analytic expression above to evaluate each term.\
+\>", "Text",
+ CellChangeTimes->{{3.748975337634389*^9, 3.748975403607026*^9}, {
+  3.8121225458502483`*^9, 3.812122584447024*^9}, {3.8121299731071033`*^9, 
+  3.8121299789901032`*^9}},ExpressionUUID->"2b3674be-a741-4144-9e2c-\
+3225e9c5390e"],
+
+Cell[TextData[StyleBox["Use Mathematica's numerical algorithm to evaluate the \
+Wightman function of time-like separations. Plot your result and carefully \
+what you have found.",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.8121225972967653`*^9, 3.8121226467636127`*^9}, {
+  3.8121236021670427`*^9, 
+  3.8121236091297503`*^9}},ExpressionUUID->"e7e0c648-135a-4257-8722-\
+b8d2a24108f5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["[4] Space-Like Separation of Events", "Section",
+ CellChangeTimes->{{3.748974622723385*^9, 3.748974645722927*^9}, {
+   3.812123328772747*^9, 3.812123332643356*^9}, 3.81212933263859*^9, 
+   3.8121294355834923`*^9, {3.8121297008623433`*^9, 
+   3.812129702272727*^9}},ExpressionUUID->"1366950d-1498-41b0-8a06-\
+35404e0ccfda"],
+
+Cell[CellGroupData[{
+
+Cell["[a] Space-Like Separations", "Subsection",
+ CellChangeTimes->{{3.812129296837601*^9, 3.8121292975331078`*^9}, {
+  3.812129345586297*^9, 3.812129348448104*^9}, {3.812129446071761*^9, 
+  3.81212944676131*^9}},ExpressionUUID->"5e80f030-427e-44d7-9d98-\
+15971eebf3d3"],
+
+Cell["\<\
+Again put event y at the origin but now assume that event x is \
+space-like--i.e. that it occurs in Elsewhere:\
+\>", "Text",
+ CellChangeTimes->{{3.7488808434251757`*^9, 3.7488808992219276`*^9}, {
+  3.748881283217847*^9, 3.748881342185067*^9}, {3.748881798691478*^9, 
+  3.748881878395687*^9}, {3.7488823584522467`*^9, 3.748882381075396*^9}, {
+  3.748884233604847*^9, 3.748884313626236*^9}, {3.748948357071857*^9, 
+  3.748948366407961*^9}, {3.7489484243767557`*^9, 3.748948452506913*^9}, {
+  3.74897547037438*^9, 3.748975508532625*^9}, {3.7820419350703545`*^9, 
+  3.7820419350703545`*^9}, {3.782044043243129*^9, 3.7820440919318705`*^9}, {
+  3.7820479593536277`*^9, 3.782048011560192*^9}, {3.8121299948320293`*^9, 
+  3.812130037439277*^9}},ExpressionUUID->"655725ba-7c3c-4c74-bd23-\
+f2a782103ac2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", 
+    RowBox[{"x", "-", "y"}], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]"}], ")"}], "3"]], 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[DifferentialD]", "3"], 
+      OverscriptBox["p", "_"]}], " ", 
+     FractionBox["1", 
+      RowBox[{"2", 
+       SubscriptBox["E", 
+        OverscriptBox["p", "_"]]}]], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", 
+       RowBox[{"p", "\[CenterDot]", 
+        RowBox[{"(", 
+         RowBox[{"x", "-", "y"}], ")"}]}]}]]}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, 
+   3.7820480000309997`*^9, {3.812123157374158*^9, 
+   3.812123160834073*^9}},ExpressionUUID->"7a246973-f86e-4821-a1bb-\
+3be2a3ed46c4"],
+
+Cell[TextData[{
+ "Then there exists a frame for which event x is purely space-like--i.e. for \
+which event x occurs at the same time as event y but at different position in \
+space. We can therefore set ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "0"], " ", "=", " ", 
+    SuperscriptBox["y", "0"], " "}], TraditionalForm]],ExpressionUUID->
+  "abe22c9b-7e40-4d9c-aae3-a7feb01bef57"],
+ " and plot ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"D", "(", 
+    RowBox[{"x", "-", "y"}], ")"}], TraditionalForm]],ExpressionUUID->
+  "4f6a19bf-f871-4af9-ade7-0db6c45699ea"],
+ ". The Wightman function becomes"
+}], "Text",
+ CellChangeTimes->{{3.7820480142330055`*^9, 3.7820480498377533`*^9}, {
+  3.8121233479186516`*^9, 
+  3.8121233620109315`*^9}},ExpressionUUID->"1c0c381a-bacf-4379-8eaf-\
+82c8b63eb499"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", 
+    OverscriptBox["r", "_"], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]"}], ")"}], "3"]], 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[DifferentialD]", "3"], 
+      OverscriptBox["p", "_"]}], " ", 
+     FractionBox["1", 
+      RowBox[{"2", 
+       SqrtBox[
+        RowBox[{
+         SuperscriptBox[
+          OverscriptBox["p", "_"], "2"], "+", 
+         SuperscriptBox["m", "2"]}]]}]], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", 
+       RowBox[{
+        OverscriptBox["p", "_"], " ", "\[CenterDot]", 
+        OverscriptBox["r", "_"]}]}]]}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+   3.748890383051187*^9, 3.748890460721966*^9}, {3.748890499573517*^9, 
+   3.748890527740383*^9}, {3.7820481479533052`*^9, 3.7820482041565275`*^9}, 
+   3.7820488586568484`*^9, {3.812123241488969*^9, 3.8121232481277447`*^9}, 
+   3.8121234942333193`*^9},ExpressionUUID->"33b19c96-c2ee-4d4f-bcd7-\
+e5d309e6279d"],
+
+Cell["\<\
+Show that this is equivalent to the following form, which is more amenable to \
+analysis:\
+\>", "Text",
+ CellChangeTimes->{{3.8121235030419436`*^9, 3.812123589037324*^9}, {
+   3.812123630370289*^9, 3.8121236354356937`*^9}, 3.8121241919001217`*^9, {
+   3.8121243182969522`*^9, 
+   3.8121243448671246`*^9}},ExpressionUUID->"17bc33f9-3bd7-4258-aa53-\
+b2214d3870b1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", 
+    OverscriptBox["r", "_"], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"-", "\[ImaginaryI]"}], 
+    RowBox[{"2", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"2", "\[Pi]"}], ")"}], "2"], 
+     OverscriptBox["r", "_"]}]], 
+   RowBox[{
+    UnderscriptBox[
+     OverscriptBox["\[Integral]", "\[Infinity]"], 
+     RowBox[{"-", "\[Infinity]"}]], 
+    RowBox[{
+     RowBox[{"\[DifferentialD]", 
+      SubscriptBox[
+       OverscriptBox["p", "_"], "mag"]}], " ", 
+     FractionBox[
+      RowBox[{
+       SubscriptBox[
+        OverscriptBox["p", "_"], "mag"], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         SubscriptBox[
+          OverscriptBox["p", "_"], "mag"], " ", 
+         OverscriptBox["r", "_"]}]]}], 
+      SqrtBox[
+       RowBox[{
+        SubsuperscriptBox[
+         OverscriptBox["p", "_"], "mag", "2"], "+", 
+        SuperscriptBox["m", "2"]}]]]}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+   3.748890383051187*^9, 3.748890460721966*^9}, {3.748890499573517*^9, 
+   3.748890527740383*^9}, {3.7820481479533052`*^9, 3.7820482041565275`*^9}, {
+   3.7820485093220987`*^9, 3.7820485784694777`*^9}, {3.782048703159604*^9, 
+   3.7820487038308086`*^9}, {3.782048781815282*^9, 3.782049012868229*^9}, 
+   3.7820490534120293`*^9, {3.782049150284544*^9, 3.782049172372654*^9}, {
+   3.78204920821377*^9, 3.782049222226282*^9}, 3.7820492553337107`*^9, 
+   3.782049338689084*^9, 3.8121243618756905`*^9, {3.8121300765338993`*^9, 
+   3.812130099706791*^9}},ExpressionUUID->"28a2e140-7498-47f8-94c2-\
+f342c466e37c"],
+
+Cell[TextData[{
+ "Don't get tripped up because the final integral is over the entire real \
+number line. At this point, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    OverscriptBox["p", "_"], "mag"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "8bd66529-c06c-48a5-9d35-9ae2c9edd2f2"],
+ " is just a dummy scalar, and we could have written this integral in term of \
+some real-valued scalar, k:"
+}], "Text",
+ CellChangeTimes->{{3.8121301348906035`*^9, 3.8121301976812787`*^9}, {
+  3.812130237417905*^9, 
+  3.8121302668592405`*^9}},ExpressionUUID->"49d12948-766b-4b6b-ad53-\
+dbd690e1dac3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", 
+    OverscriptBox["r", "_"], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"-", "\[ImaginaryI]"}], 
+    RowBox[{"2", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"2", "\[Pi]"}], ")"}], "2"], 
+     OverscriptBox["r", "_"]}]], 
+   RowBox[{
+    UnderscriptBox[
+     OverscriptBox["\[Integral]", "\[Infinity]"], 
+     RowBox[{"-", "\[Infinity]"}]], 
+    RowBox[{
+     RowBox[{"\[DifferentialD]", "k"}], " ", 
+     FractionBox[
+      RowBox[{"k", " ", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", "k", " ", 
+         OverscriptBox["r", "_"]}]]}], 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["k", "2"], "+", 
+        SuperscriptBox["m", "2"]}]]]}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+   3.748890383051187*^9, 3.748890460721966*^9}, {3.748890499573517*^9, 
+   3.748890527740383*^9}, {3.7820481479533052`*^9, 3.7820482041565275`*^9}, {
+   3.7820485093220987`*^9, 3.7820485784694777`*^9}, {3.782048703159604*^9, 
+   3.7820487038308086`*^9}, {3.782048781815282*^9, 3.782049012868229*^9}, 
+   3.7820490534120293`*^9, {3.782049150284544*^9, 3.782049172372654*^9}, {
+   3.78204920821377*^9, 3.782049222226282*^9}, 3.7820492553337107`*^9, 
+   3.782049338689084*^9, 3.8121243618756905`*^9, {3.8121300765338993`*^9, 
+   3.812130099706791*^9}, {3.812130213082671*^9, 
+   3.812130251682046*^9}},ExpressionUUID->"d73dbf24-95ca-464c-8634-\
+4cff0b691b11"],
+
+Cell["\<\
+At this point, you could evaluate the integral numerically, just as for the \
+time-like separation, but take one further step to make a connection to the \
+analytic estimate that P&S provide.\
+\>", "Text",
+ CellChangeTimes->{{3.78204964743874*^9, 3.7820496994785194`*^9}, {
+  3.812124384099314*^9, 
+  3.8121243896746564`*^9}},ExpressionUUID->"9e982cd6-4d10-4f2d-ad56-\
+8fc33536d522"],
+
+Cell["Define \[Rho] := -\[ImaginaryI] |p| and show that", "Text",
+ CellChangeTimes->{
+  3.782047962102275*^9, 3.78204903655029*^9, {3.812124400842081*^9, 
+   3.8121244035042205`*^9}},ExpressionUUID->"656cd7ea-9a80-47b2-bad0-\
+d11f751b301e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"D", 
+   RowBox[{"(", 
+    OverscriptBox["r", "_"], ")"}]}], " ", "=", " ", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"4", " ", 
+     SuperscriptBox["\[Pi]", "2"], "r"}]], 
+   RowBox[{
+    UnderscriptBox[
+     SuperscriptBox["\[Integral]", "\[Infinity]"], "m"], 
+    RowBox[{
+     RowBox[{"\[DifferentialD]", "\[Rho]"}], " ", 
+     FractionBox["\[Rho]", 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["\[Rho]", "2"], "-", 
+        SuperscriptBox["m", "2"]}]]], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Rho]", " ", 
+       "r"}]]}]}]}]}]], "NumberedEquation",
+ CellChangeTimes->{{3.748880791562358*^9, 3.748880866534218*^9}, {
+   3.748890383051187*^9, 3.748890460721966*^9}, {3.748890499573517*^9, 
+   3.748890527740383*^9}, 
+   3.81212441441131*^9},ExpressionUUID->"5296738e-71b1-474b-ad47-\
+59c64066a98d"],
+
+Cell["\<\
+This is the expression that you will be numerically evaluating.\
+\>", "Text",
+ CellChangeTimes->{{3.812124407187811*^9, 
+  3.8121244263609962`*^9}},ExpressionUUID->"66ad7c0d-ae3f-44d5-905d-\
+a447a6eee5a7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+[b] Numerical Evaluation of the Wightman Function for Space-Like Separations\
+\>", "Subsection",
+ CellChangeTimes->{{3.8121242042396135`*^9, 3.812124206366658*^9}, {
+   3.8121242409605117`*^9, 3.8121242468709126`*^9}, 3.812129354241157*^9, {
+   3.8121294516805716`*^9, 
+   3.8121294570525665`*^9}},ExpressionUUID->"549e7411-8129-40b0-a6f1-\
+625e15954c4e"],
+
+Cell["\<\
+Use Mathematica's numerical algorithm to evaluate the Wightman function of \
+time-like separations. Plot your result and carefully what you have found.\
+\>", "Text",
+ CellChangeTimes->{{3.812124209462426*^9, 
+  3.812124218892358*^9}},ExpressionUUID->"ccc5f7a5-5a44-4462-86e9-\
+55886e1e0561"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["[5] The Retarded Propagator in Minkowski Space", "Section",
+ CellChangeTimes->{{3.748974622723385*^9, 3.748974655672634*^9}, {
+  3.8121248776605883`*^9, 3.8121248790254154`*^9}, {3.812125002508179*^9, 
+  3.812125011478376*^9}, {3.812129392272393*^9, 3.81212940219559*^9}, {
+  3.81212945350356*^9, 
+  3.8121294862201552`*^9}},ExpressionUUID->"2c70da82-51bf-41df-99cc-\
+bc84f8cc8f73"],
+
+Cell["\<\
+Plot your time-like and space-like results on the same plot, and draw \
+conclusions about what the Wightman function is like over all of Minkowski \
+space. For instance, are there regions where the function is zero? 
+
+Now that you have a sense for the Wightman function, go back to the retarded \
+propagator. What can you say about its values for time-like and space-like \
+separations? What about the Feynman propagator?
+
+Although it was associated with the Schrodinger equation, you may want to \
+review our lecture notes on Green Operators (p6) and Time-Dependent \
+Perturbation Theory (p1) to remind yourself of the non-relativistic link \
+between the retarded Green operator and probability amplitudes. We will be \
+developing something analogous within the QFT setting. This will allow us to \
+distinguish between similar-sounding questions when considering two \
+space-time events:
+
+\[SmallCircle]  Can particles propagate over space-like distances?
+
+\[SmallCircle]  Can a measurement performed at one point affect a measurement \
+performed at another point if the two events have a space-like separation?
+
+You might already be able to see how these are different from your analysis. \
+Try to say something about this.\
+\>", "Text",
+ CellChangeTimes->{{3.8121248964290495`*^9, 3.812125081712826*^9}, {
+  3.8121256748207197`*^9, 3.8121257663499312`*^9}, {3.812126369927184*^9, 
+  3.812126420498608*^9}, {3.8121265092606297`*^9, 3.81212652539287*^9}, {
+  3.8121265591164155`*^9, 3.812126706541217*^9}, {3.8121267646808634`*^9, 
+  3.8121268569136205`*^9}, {3.812130311910754*^9, 3.8121304757060843`*^9}, {
+  3.8121313661314597`*^9, 
+  3.812131427767007*^9}},ExpressionUUID->"62509767-482f-4c98-84f9-\
+a5dab4a21ea0"]
+}, Open  ]]
+},
+WindowSize->{976.5, 846.},
+WindowMargins->{{-84, Automatic}, {857.25, Automatic}},
+SpellingDictionaries->{"CorrectWords"->{
+ "Indebetouw", "Lusk", "unprimed", "kets", "eigenenergies", "Soln", 
+  "spinless", "Yukawa", "ns", "fs", "Poynting", "wavepacket", "Groszek", 
+  "Wightman", "Kitaev", "Anyons", "anyons", "Anyonic", "anyonic", "Yay", 
+  "Proca", "Lagrangians", "eigenbasis", "Greiner", "Indicially", "Grozsek", 
+  "Chuanzhou", "Zhu", "barotropic", "eigenkets", "ket", "Bellac", 
+  "exponentiated", "Padgett", "Dholakia", "Courtial", "superfluids", 
+  "nondissipative", "deviatoric", "Pitaesvski", "Pitaevski", "Thouless", 
+  "Superfluids", "Proietti\[CloseCurlyQuote]s", "Gedanken", "Frauchiger", 
+  "Ontic", "quasiparticles", "Gyrotropic", "coherences", "Rovelli", 
+  "Eigenbasis", "Neo", "Clauser", "Voitiv", "Zehnder", "Bogoliubov", 
+  "nondimensional", "Majorana", "antihydrogen", "Eigenprojection", "Gouy", 
+  "azimuthally", "\[Theta] ", "\[Theta]\n", "untilted", "Zeilinger", "qudits",
+   "downconversion", "braidings", "Kren", "Hern\[AAcute]ndez", "Cedillo", 
+  "J\[AAcute]uregui", "Barbosa", "Aharonov", "Bliokh", 
+  "nondimensionalization", "Polyacetylene", "Peierls", "Kekule", 
+  "polyacetylene", "fractionalization", "Sublattice", "sublattice", 
+  "anticommutes", "fractionalize", "Spinless", "annihilations", "Barenghi", 
+  "Tipler", "Wistrand", "Fraunhofer", "Peierl's", "Fractionalization", 
+  "eigenenergy", "upconversion", "Jackiw", "vaccua", "Hou", "Numfunc", 
+  "Analfunc"}},
+Magnification:>1.4 Inherited,
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Lusk_classroom.nb",
+ExpressionUUID->"d572a469-29df-4ee3-8df4-8a81a2da4efa"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 422, 14, 125, "Title",ExpressionUUID->"5ec389d0-d632-443e-85f6-d018646f7c12"],
+Cell[983, 36, 680, 13, 71, "Text",ExpressionUUID->"c6d51466-c603-4454-bded-1e70dab007e3"],
+Cell[CellGroupData[{
+Cell[1688, 53, 598, 8, 105, "Section",ExpressionUUID->"fa262c83-3b95-4974-af21-6cd830faaf6c"],
+Cell[2289, 63, 201, 3, 43, "Text",ExpressionUUID->"64a26ff5-d760-47d0-86d6-fc7ae75af1d3"],
+Cell[2493, 68, 483, 15, 38, "NumberedEquation",ExpressionUUID->"cd3829c5-22f2-491d-a0ec-b4019d4d810d"],
+Cell[2979, 85, 294, 7, 43, "Text",ExpressionUUID->"c1437938-ee11-4eb0-b29b-33e08837fb86"],
+Cell[3276, 94, 738, 21, 38, "NumberedEquation",ExpressionUUID->"cbf17e1f-3869-497a-896b-07d78c3c2f96"],
+Cell[4017, 117, 581, 12, 156, "Text",ExpressionUUID->"33639ea0-0fe1-4222-b73c-886bad1f24d8"],
+Cell[4601, 131, 795, 23, 59, "NumberedEquation",ExpressionUUID->"d5e9339f-66e6-43b4-a698-b82c3e45d8dc"],
+Cell[5399, 156, 245, 4, 43, "Text",ExpressionUUID->"9d4028b1-5e37-46ca-9bc7-ae43ed0e6a7f"],
+Cell[5647, 162, 922, 23, 65, "NumberedEquation",ExpressionUUID->"1e4c8fa1-0c0c-41dc-9fd4-a42b8244f20d"],
+Cell[6572, 187, 283, 4, 43, "Text",ExpressionUUID->"2a4572b5-8af6-4c06-b338-d4b8ee9772d3"],
+Cell[6858, 193, 600, 15, 38, "NumberedEquation",ExpressionUUID->"5bbe8d1a-5a77-42ac-acb7-b5fd2c0c8ed9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7495, 213, 677, 10, 105, "Section",ExpressionUUID->"530d5b47-7f80-4856-8be5-a5be2d72672b"],
+Cell[8175, 225, 589, 10, 71, "Text",ExpressionUUID->"d920c8d8-34fb-4eb6-bf45-a7c6d17254b3"],
+Cell[8767, 237, 1014, 33, 60, "NumberedEquation",ExpressionUUID->"27e020a7-bf48-435a-a461-ec4e3492696f"],
+Cell[9784, 272, 489, 9, 71, "Text",ExpressionUUID->"261f05dd-e7c6-4763-9706-8d30f43f1ae9"],
+Cell[10276, 283, 679, 22, 38, "NumberedEquation",ExpressionUUID->"bebc5fd4-c609-4a4f-aefc-af297642b333"],
+Cell[10958, 307, 277, 6, 71, "Text",ExpressionUUID->"6e93da7c-8f4b-40da-bf55-4560880001e7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11272, 318, 333, 5, 105, "Section",ExpressionUUID->"e8333c71-6b97-4b20-b7cb-415307252415"],
+Cell[CellGroupData[{
+Cell[11630, 327, 224, 4, 73, "Subsection",ExpressionUUID->"86b90de5-a812-4981-a106-26e780735acb"],
+Cell[11857, 333, 2211, 45, 273, "Text",ExpressionUUID->"dedd5e2f-9e95-4586-b94d-98487b196e07"],
+Cell[14071, 380, 1125, 32, 83, "NumberedEquation",ExpressionUUID->"095cc0dd-a604-4df1-be66-4aa56a5db57b"],
+Cell[15199, 414, 272, 6, 71, "Text",ExpressionUUID->"d9973a7c-c853-4ed2-89ee-9b3625825632"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15508, 425, 254, 5, 73, "Subsection",ExpressionUUID->"89327832-967e-4304-9996-ca7d04b55df5"],
+Cell[15765, 432, 1369, 22, 297, "Text",ExpressionUUID->"cbb579e7-01cb-4d40-830b-aa4b0e95ae72"],
+Cell[17137, 456, 828, 24, 58, "NumberedEquation",ExpressionUUID->"cb25d073-3342-4b42-87fb-3eeab1973784"],
+Cell[17968, 482, 314, 8, 100, "Text",ExpressionUUID->"dcc36ec3-2f87-486b-b2b7-320d54672c68"],
+Cell[CellGroupData[{
+Cell[18307, 494, 913, 24, 108, "Input",ExpressionUUID->"d9809547-58e6-4662-92f9-182dcd201bd3"],
+Cell[19223, 520, 565, 14, 76, "Output",ExpressionUUID->"02f54a93-fdc6-45af-a4aa-0f45b4cb4f2d"]
+}, Open  ]],
+Cell[19803, 537, 222, 5, 43, "Text",ExpressionUUID->"c332ef5e-f453-404d-bbe8-d71f5ca2ebde"],
+Cell[20028, 544, 988, 23, 135, "Input",ExpressionUUID->"c86c79d8-ab27-4127-b108-fd33cb565c7c"],
+Cell[21019, 569, 219, 5, 43, "Text",ExpressionUUID->"71ff0fce-5af1-484c-b0f9-0517f6037f10"],
+Cell[CellGroupData[{
+Cell[21263, 578, 570, 14, 159, "Input",ExpressionUUID->"68bc335a-3ed4-4239-864c-250a917aa956"],
+Cell[21836, 594, 389, 6, 36, "Output",ExpressionUUID->"358c0f7b-fbba-4a55-8d47-c213a7326c0a"],
+Cell[22228, 602, 485, 8, 38, "Output",ExpressionUUID->"95f0ba8a-0fcd-4739-b7b6-02cd475f082a"]
+}, Open  ]],
+Cell[22728, 613, 200, 3, 43, "Text",ExpressionUUID->"c27b5020-5694-44cc-81fe-7924d9f7698f"],
+Cell[CellGroupData[{
+Cell[22953, 620, 617, 15, 159, "Input",ExpressionUUID->"0d06b10a-5843-48f0-901e-851964f7cf8f"],
+Cell[23573, 637, 403, 7, 36, "Output",ExpressionUUID->"e46597c9-e1d3-4e05-8ac5-12f3145e3942"],
+Cell[23979, 646, 466, 8, 36, "Output",ExpressionUUID->"fc152d48-aecd-4536-bcd7-d642962cdf31"]
+}, Open  ]],
+Cell[24460, 657, 610, 10, 128, "Text",ExpressionUUID->"2b3674be-a741-4144-9e2c-3225e9c5390e"],
+Cell[25073, 669, 393, 7, 71, "Text",ExpressionUUID->"e7e0c648-135a-4257-8722-b8d2a24108f5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25515, 682, 328, 5, 105, "Section",ExpressionUUID->"1366950d-1498-41b0-8a06-35404e0ccfda"],
+Cell[CellGroupData[{
+Cell[25868, 691, 270, 4, 73, "Subsection",ExpressionUUID->"5e80f030-427e-44d7-9d98-15971eebf3d3"],
+Cell[26141, 697, 804, 13, 71, "Text",ExpressionUUID->"655725ba-7c3c-4c74-bd23-f2a782103ac2"],
+Cell[26948, 712, 909, 28, 60, "NumberedEquation",ExpressionUUID->"7a246973-f86e-4821-a1bb-3be2a3ed46c4"],
+Cell[27860, 742, 811, 21, 102, "Text",ExpressionUUID->"1c0c381a-bacf-4379-8eaf-82c8b63eb499"],
+Cell[28674, 765, 1172, 33, 65, "NumberedEquation",ExpressionUUID->"33b19c96-c2ee-4d4f-bcd7-e5d309e6279d"],
+Cell[29849, 800, 372, 8, 43, "Text",ExpressionUUID->"17bc33f9-3bd7-4258-aa53-b2214d3870b1"],
+Cell[30224, 810, 1688, 44, 83, "NumberedEquation",ExpressionUUID->"28a2e140-7498-47f8-94c2-f342c466e37c"],
+Cell[31915, 856, 615, 15, 104, "Text",ExpressionUUID->"49d12948-766b-4b6b-ad53-dbd690e1dac3"],
+Cell[32533, 873, 1527, 38, 83, "NumberedEquation",ExpressionUUID->"d73dbf24-95ca-464c-8634-4cff0b691b11"],
+Cell[34063, 913, 393, 8, 71, "Text",ExpressionUUID->"9e982cd6-4d10-4f2d-ad56-8fc33536d522"],
+Cell[34459, 923, 240, 4, 43, "Text",ExpressionUUID->"656cd7ea-9a80-47b2-bad0-d11f751b301e"],
+Cell[34702, 929, 913, 27, 72, "NumberedEquation",ExpressionUUID->"5296738e-71b1-474b-ad47-59c64066a98d"],
+Cell[35618, 958, 215, 5, 43, "Text",ExpressionUUID->"66ad7c0d-ae3f-44d5-905d-a447a6eee5a7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35870, 968, 365, 7, 73, "Subsection",ExpressionUUID->"549e7411-8129-40b0-a6f1-625e15954c4e"],
+Cell[36238, 977, 301, 6, 71, "Text",ExpressionUUID->"ccc5f7a5-5a44-4462-86e9-55886e1e0561"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36588, 989, 388, 6, 105, "Section",ExpressionUUID->"2c70da82-51bf-41df-99cc-bc84f8cc8f73"],
+Cell[36979, 997, 1729, 32, 607, "Text",ExpressionUUID->"62509767-482f-4c98-84f9-a5dab4a21ea0"]
+}, Open  ]]
+}
+]
+*)
+
